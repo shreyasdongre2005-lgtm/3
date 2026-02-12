@@ -19,94 +19,12 @@ body{
     height:100vh;
     overflow:hidden;
     background:linear-gradient(135deg,#ffd6e8,#ff4f81);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    color:#fff;
-}
-
-/* Floating Hearts */
-.heart{
-    position:fixed;
-    bottom:-50px;
-    animation:floatUp linear infinite;
-    opacity:0;
-    pointer-events:none;
-}
-
-@keyframes floatUp{
-    0%{transform:translateY(0);opacity:0;}
-    10%{opacity:1;}
-    90%{opacity:1;}
-    100%{transform:translateY(-110vh);opacity:0;}
-}
-
-/* Main Container */
-.container{
-    z-index:10;
-    max-width:95%;
-}
-
-.bear{
-    font-size:70px;
-    animation:bounce 1.2s infinite;
-}
-
-@keyframes bounce{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-20px);}
-}
-
-h1{
-    font-family:'Dancing Script',cursive;
-    font-size:42px;
-    margin:15px 0;
-}
-
-.subtitle{
-    font-style:italic;
-    margin-bottom:20px;
-    line-height:1.6;
-    font-size:15px;
-}
-
-.buttons{
-    margin-top:30px;
-    display:flex;
-    justify-content:center;
-    gap:40px;
-}
-
-#yesBtn{
-    padding:15px 35px;
-    font-size:18px;
-    border:none;
-    border-radius:50px;
-    background:linear-gradient(45deg,#ff0000,#ff4d6d);
     color:white;
-    cursor:pointer;
-    box-shadow:0 0 15px rgba(255,0,0,0.6);
-    transition:0.3s;
+    text-align:center;
 }
 
-#yesBtn:hover{
-    box-shadow:0 0 25px rgba(255,0,0,1);
-    transform:scale(1.05);
-}
-
-#noBtn{
-    padding:10px 25px;
-    font-size:16px;
-    background:white;
-    border:2px solid red;
-    color:red;
-    border-radius:30px;
-    cursor:pointer;
-}
-
-/* Celebration Page */
-.celebration{
+/* Page System */
+.page{
     position:fixed;
     inset:0;
     display:none;
@@ -115,50 +33,72 @@ h1{
     justify-content:flex-start;
     padding-top:40px;
     overflow-y:auto;
-    background:linear-gradient(135deg,#ff4f81,#ff1493);
-    z-index:20;
 }
 
-.celebration h2{
-    font-size:60px;
-    animation:pulse 1s infinite;
+.page.active{
+    display:flex;
+}
+
+/* Headings */
+h1,h2{
     font-family:'Dancing Script',cursive;
 }
 
-@keyframes pulse{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.2);}
+/* Buttons */
+button{
+    margin-top:20px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
 }
 
-.spin{
-    font-size:50px;
-    animation:spin 2s linear infinite;
+.primary{
+    background:linear-gradient(45deg,#ff0000,#ff4d6d);
+    color:white;
 }
 
-@keyframes spin{
-    from{transform:rotate(0);}
-    to{transform:rotate(360deg);}
+.primary:hover{
+    transform:scale(1.05);
+}
+
+.secondary{
+    background:white;
+    color:red;
+    border:2px solid red;
 }
 
 /* Gallery */
 .gallery{
-    margin-top:40px;
+    margin-top:30px;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
     gap:15px;
     width:90%;
-    padding-bottom:50px;
 }
 
 .gallery img{
     width:100%;
     border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
-    transition:0.4s;
 }
 
-.gallery img:hover{
-    transform:scale(1.05);
+/* Love Text */
+.love-text{
+    margin-top:30px;
+    width:85%;
+    line-height:1.7;
+    font-size:18px;
+}
+
+/* Video */
+video{
+    width:90%;
+    max-width:600px;
+    border-radius:20px;
+    margin-top:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
 }
 
 /* Confetti */
@@ -181,63 +121,84 @@ h1{
 
 <body>
 
-<div class="container" id="mainContent">
-    <div class="bear">🐻</div>
-    <h1>Will You Be My Valentine, Janhavi? ❤️</h1>
-    <div class="subtitle">
-    </div>
-
-    <div class="buttons">
-        <button id="yesBtn">Yes ❤️</button>
-        <button id="noBtn">No</button>
-    </div>
-</div>
-
-<div class="celebration" id="celebration">
-    <h2>Yayyy!! 🎉</h2>
-    <div class="spin">💖</div>
-    <p style="margin-top:20px;font-size:22px;">      
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1>
         Aankhein bichayi hai tumhare deedar ke liye<br>
         Intezar kr raha hu kab hum fir mile......<br>
         Milkr bas tumhe dekhna chahta hu<br>
         Bas tumse behekna Chahata hu<br>
-        Tu kabhi kabhi baate aisi krti hai jaise tujhe JAAN Meri HAVI hai🥰🥰
-        I love you Jannu ❤️</p>
+        Tu kabhi kabhi baate aisi krti hai jaise tujhe JAAN Meri HAVI hai🥰🥰<br><br>
+        Will You Be My Valentine, Janhavi? ❤️
+    </h1>
+
+    <button class="primary" onclick="goToPage(2)">Yes ❤️</button>
+    <button class="secondary" id="noBtn">No</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <h2>I love you the most Jannu 💋❤️</h2>
+
+    <div class="love-text">
+Tum jab se aayi ho sab kuch khubsurat hogaya hai....
+Tum jab se aayi ho ek naya nazariya mil gaya hai....
+Tumne iss qadar mujhe apne vaash mai krliya hai...
+Ki din ki subah ki tumse aur raat bhi tumse hoti hai
+Teri wajah se ye nayi feeling pata chali hai PYAAR ki 
+Mai sochta hu tum na hoti toh kya hota 
+Aur ye sochkr samajhta hai ki aisi zindagi soch bhi nahi sakta jisme tum na ho...
+
+Kaise batau mai tumhe tum mere liye kaun ho
+Tum mera preet ho manmeet ho mere liye tum geet ho 
+Tum mere liye sagar ho phool ho titli ho tum
+Mere liye suraj bhi tum aur chand bhi tum
+Tum hi ho hawa tum hi subah tum hi sham aur raat bhi tum
+Tum hi ho pehla pyaar pehla khayal din ka......Kaise batau mere liye tum kaun ho
+Humesha lgta hai kitna lucky ho mai jo mujhe tum mili 
+Tumse baat krke khushi milti hai rahat milti hai 
+Tumse baat krke sukoon milta hai...
+Tum mere liye bohot special ho🫠🫠
+Tumhe chidane mai jitni khushi milti hai utni aur kisi cheez mai nahi milti
+So.....Kya tum mere sath aise hi zindagi bhar rehna chahogi, lifelong besties, better half, lovers ahr sab kuch
+Kya tum mere sath aise hi budha hona chahogi
+    </div>
 
     <div class="gallery">
         <img src="image1.jpeg">
         <img src="image2.jpeg">
         <img src="image3.jpeg">
+        <img src="image4.jpeg">
+        <img src="image5.jpeg">
+        <img src="image6.jpeg">
     </div>
+
+    <button class="primary" onclick="goToPage(3)">Watch Something Special 🎬</button>
 </div>
 
-<!-- Apocalypse Song -->
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <h1>Our Beautiful Memories ❤️</h1>
+
+    <video controls>
+        <source src="our-memory.mp4" type="video/mp4">
+    </video>
+
+    <button class="primary" onclick="goToPage(1)">Start Again 💖</button>
+</div>
+
+<!-- SONG -->
 <audio id="romanticSong" loop>
     <source src="apocalypse.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-const noBtn=document.getElementById("noBtn");
-const yesBtn=document.getElementById("yesBtn");
-const celebration=document.getElementById("celebration");
 const song=document.getElementById("romanticSong");
+const noBtn=document.getElementById("noBtn");
 
 const messages=["Nope, not an option!","Try again!","You sure about that?","Not happening!","Think again!"];
 let msgIndex=0;
 
-/* Floating Hearts */
-for(let i=0;i<15;i++){
-    let heart=document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML="❤️";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(Math.random()*25+20)+"px";
-    heart.style.animationDuration=(Math.random()*5+5)+"s";
-    heart.style.animationDelay=Math.random()*5+"s";
-    document.body.appendChild(heart);
-}
-
-/* Move No Button */
 noBtn.addEventListener("click",()=>{
     noBtn.style.position="fixed";
     noBtn.style.left=Math.random()*80+"vw";
@@ -246,13 +207,18 @@ noBtn.addEventListener("click",()=>{
     msgIndex=(msgIndex+1)%messages.length;
 });
 
-/* YES CLICK */
-yesBtn.addEventListener("click",()=>{
-    document.getElementById("mainContent").style.display="none";
-    celebration.style.display="flex";
-    song.play();
+function goToPage(page){
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+    document.getElementById("page"+page).classList.add("active");
 
-    for(let i=0;i<120;i++){
+    if(page === 2){
+        song.play();
+        launchConfetti();
+    }
+}
+
+function launchConfetti(){
+    for(let i=0;i<100;i++){
         let conf=document.createElement("div");
         conf.classList.add("confetti");
         conf.style.left=Math.random()*100+"vw";
@@ -261,7 +227,7 @@ yesBtn.addEventListener("click",()=>{
         document.body.appendChild(conf);
         setTimeout(()=>conf.remove(),3000);
     }
-});
+}
 </script>
 
 </body>
