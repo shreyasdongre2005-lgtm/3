@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Janhavi ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    background:linear-gradient(135deg,#ffd6e8,#ff4f81);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:#fff;
+}
+
+/* Floating Hearts */
+.heart{
+    position:fixed;
+    bottom:-50px;
+    animation:floatUp linear infinite;
+    opacity:0;
+    pointer-events:none;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(0);opacity:0;}
+    10%{opacity:1;}
+    90%{opacity:1;}
+    100%{transform:translateY(-110vh);opacity:0;}
+}
+
+/* Main Container */
+.container{
+    z-index:10;
+    max-width:95%;
+}
+
+.bear{
+    font-size:70px;
+    animation:bounce 1.2s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+}
+
+h1{
+    font-family:'Dancing Script',cursive;
+    font-size:42px;
+    margin:15px 0;
+}
+
+.subtitle{
+    font-style:italic;
+    margin-bottom:20px;
+    line-height:1.6;
+    font-size:15px;
+}
+
+.buttons{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:40px;
+}
+
+#yesBtn{
+    padding:15px 35px;
+    font-size:18px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#ff0000,#ff4d6d);
+    color:white;
+    cursor:pointer;
+    box-shadow:0 0 15px rgba(255,0,0,0.6);
+    transition:0.3s;
+}
+
+#yesBtn:hover{
+    box-shadow:0 0 25px rgba(255,0,0,1);
+    transform:scale(1.05);
+}
+
+#noBtn{
+    padding:10px 25px;
+    font-size:16px;
+    background:white;
+    border:2px solid red;
+    color:red;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+/* Celebration Page */
+.celebration{
+    position:fixed;
+    inset:0;
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    padding-top:40px;
+    overflow-y:auto;
+    background:linear-gradient(135deg,#ff4f81,#ff1493);
+    z-index:20;
+}
+
+.celebration h2{
+    font-size:60px;
+    animation:pulse 1s infinite;
+    font-family:'Dancing Script',cursive;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+}
+
+.spin{
+    font-size:50px;
+    animation:spin 2s linear infinite;
+}
+
+@keyframes spin{
+    from{transform:rotate(0);}
+    to{transform:rotate(360deg);}
+}
+
+/* Gallery */
+.gallery{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
+    width:90%;
+    padding-bottom:50px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    transition:0.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
+
+/* Confetti */
+.confetti{
+    position:fixed;
+    width:8px;
+    height:8px;
+    top:0;
+    animation:confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall{
+    to{
+        transform:translateY(100vh) rotate(720deg);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="mainContent">
+    <div class="bear">🐻</div>
+    <h1>Will You Be My Valentine, Janhavi? ❤️</h1>
+
+    <div class="subtitle">
+        Aankhein bichayi hai tumhare deedar ke liye<br>
+        Intezar kr raha hu kab hum fir mile......<br>
+        Milkr bas tumhe dekhna chahta hu<br>
+        Bas tumse behekna Chahata hu<br>
+        Tu kabhi kabhi baate aisi krti hai jaise tujhe JAAN Meri HAVI hai🥰🥰
+    </div>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes ❤️</button>
+        <button id="noBtn">No</button>
+    </div>
+</div>
+
+<div class="celebration" id="celebration">
+    <h2>Yayyy!! 🎉</h2>
+    <div class="spin">💖</div>
+    <p style="margin-top:20px;font-size:22px;">I love you Jannu ❤️</p>
+
+    <div class="gallery">
+        <img src="YOUR_IMAGE_1.jpg">
+        <img src="YOUR_IMAGE_2.jpg">
+        <img src="YOUR_IMAGE_3.jpg">
+        <img src="YOUR_IMAGE_4.jpg">
+        <img src="YOUR_IMAGE_5.jpg">
+        <img src="YOUR_IMAGE_6.jpg">
+    </div>
+</div>
+
+<!-- Apocalypse Song -->
+<audio id="romanticSong" loop>
+    <source src="apocalypse.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+const celebration=document.getElementById("celebration");
+const song=document.getElementById("romanticSong");
+
+const messages=["Nope, not an option!","Try again!","You sure about that?","Not happening!","Think again!"];
+let msgIndex=0;
+
+/* Floating Hearts */
+for(let i=0;i<15;i++){
+    let heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*25+20)+"px";
+    heart.style.animationDuration=(Math.random()*5+5)+"s";
+    heart.style.animationDelay=Math.random()*5+"s";
+    document.body.appendChild(heart);
+}
+
+/* Move No Button */
+noBtn.addEventListener("click",()=>{
+    noBtn.style.position="fixed";
+    noBtn.style.left=Math.random()*80+"vw";
+    noBtn.style.top=Math.random()*80+"vh";
+    noBtn.innerText=messages[msgIndex];
+    msgIndex=(msgIndex+1)%messages.length;
+});
+
+/* YES CLICK */
+yesBtn.addEventListener("click",()=>{
+    document.getElementById("mainContent").style.display="none";
+    celebration.style.display="flex";
+    song.play();
+
+    for(let i=0;i<120;i++){
+        let conf=document.createElement("div");
+        conf.classList.add("confetti");
+        conf.style.left=Math.random()*100+"vw";
+        conf.style.background=`hsl(${Math.random()*360},100%,50%)`;
+        conf.style.animationDuration=(Math.random()*3+2)+"s";
+        document.body.appendChild(conf);
+        setTimeout(()=>conf.remove(),3000);
+    }
+});
+</script>
+
+</body>
+</html>
